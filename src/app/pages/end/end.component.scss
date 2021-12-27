@@ -1,0 +1,199 @@
+img {
+    width: 120px;
+    height: auto;
+  }
+  .blackline {
+    background-color: black;
+    height: 50px;
+  }
+  .imgCirclestyle {
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .iconStyle {
+    display: contents;
+  }
+  .header{
+    line-height: 50px;
+  }
+  .center {
+    width: 100%;
+    &-text {
+      justify-content: center;
+      text-align: center;
+    }
+    &.header {
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 500;
+    }
+  }
+  
+  .space {
+    margin-left: 28%;
+    margin-right: 20%;
+  }
+  .col {
+    padding: 0px;
+  }
+  .connect {
+    height: 48.54px;
+    width: auto;
+    font-size: 24px;
+    line-height: 37px;
+    margin-right: 0px;
+    &-phone {
+      width: auto;
+      height: 43px;
+    }
+    &-p {
+      padding-top:16px
+    }
+  }
+  .container {
+    margin-top: 10%;
+  }
+  .marginP {
+    margin-top: 2%;
+  }
+  .content {
+    font-size: 25px;
+    font-weight: 500;
+    padding: 0px 0px 0px;
+    color: #423F3F;
+    &-2 {
+      margin-left: 33%;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+  
+  .info {
+    font-size: 18px;
+      line-height: 25px;
+      font-weight: 300;
+      color: #423f3f;
+      letter-spacing: 0px;
+    &-2 {
+      font-size: 19px;
+    }
+    &-news {
+      font-size: 16px;
+      line-height: 25px;
+      padding-top: 100px;
+      font-weight: 500;
+      color: black;
+    }
+    &-bottom {
+      padding-top: 2%;
+      font: 300 16px/25px Prompt;
+      letter-spacing: 0px;
+      color: #0666CC;
+    }
+    &-sms{
+      font-size: 18px;
+      padding-top: 15px;
+      color: #FF0006;
+      font-weight: 500;
+    }
+  }
+  
+  .grid-container{
+    display: grid;
+    grid-template-columns: 150px 48px 100px 34px 100px 10px 100px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (max-width:590px) {
+    img{
+      width: 116px;
+      height: auto;
+      margin-top: 15px;
+    }
+    .content {
+      font-size: 17px;
+      line-height: 40px;
+      font-weight: 500;
+      color: #423F3F;
+      line-height: 37px;
+      &-2 {
+        margin-left: 33%;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    .imgCirclestyle {
+      margin-top: 40px;
+      margin-bottom: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .connect {
+      height: 48.54px;
+      width: auto;
+      margin-right: 0px;
+      &-phone {
+        width: auto;
+        height: 43px;
+        margin-left: 15px;
+      }
+      &-p {
+        padding-top:29px
+      }
+    }
+  
+    .info {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 35px;
+      color: #423f3f;
+      &-2 {
+        font-size: 16px;
+        color: #423f3f;
+      }
+      &-news {
+        font-size: 16px;
+        padding-top: 50px;
+        font-weight: bold;
+        color: black;
+      }
+      &-bottom {
+        font-size: 16px;
+        color: #0666cc;
+      }
+      &-sms{
+        font-size: 14px;
+        padding-top: 15px;
+        color: #FF0006;
+        font-weight: 400;
+      }
+    }
+  
+    .grid-container{
+      display: grid;
+      grid-template-columns: 145px 50px 82px;
+      text-align: center;
+      justify-content: center;
+      &-2{
+        display: grid;
+        grid-template-columns: 50px 70px 50px 50px;
+      text-align: center;
+      justify-content: center;
+      }
+    }
+  
+  
+  }
+  

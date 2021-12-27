@@ -1,0 +1,23 @@
+<label class="label"
+  >{{ label
+  }}<span class="required-asterisk" *ngIf="required"
+    >*</span
+  ></label
+>
+<div class="example-form">
+  <mat-form-field
+    appearance="outline"
+    class="example-full-width"
+    style="padding: -7px"
+  >
+    <mat-select
+      [placeholder]="placeholder"
+      [formControl]="control"
+      name="select"
+    >
+      <mat-option *ngFor="let value of options | async" [value]="value">
+        {{ value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

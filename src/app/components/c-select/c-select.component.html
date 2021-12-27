@@ -1,0 +1,51 @@
+<div class="gnext-v2-other-reusable-select-a">
+  <div class="cover-select" [style.padding]="padding" [style.margin]="margin">
+    <ng-container *ngIf="vm$ | async as vm">
+      <form novalidate [formGroup]="selectFormGroup">
+        <mat-form-field
+          appearance="fill"
+          [style.width]="width"
+          [ngClass]="isFieldValid()"
+        >
+          <ng-container *ngIf="vm.label">
+            <mat-label>{{ vm.label }}</mat-label>
+          </ng-container>
+          <mat-select
+            [style.height]="height"
+            [ngStyle]="ngStyles"
+            [style.textAlign]="textAlign"
+            [style.background]="background"
+            formControlName="select"
+            (selectionChange)="selectionChange($event.value)"
+          >
+            <ng-container *ngFor="let item of vm.optionNone">
+              <mat-option [value]="item.value" [disabled]="item.disabled">{{
+                item.title
+              }}</mat-option>
+            </ng-container>
+            <ng-container *ngFor="let item of vm.optionArray">
+              <mat-option [value]="item.value" [disabled]="item.disabled">{{
+                item.title
+              }}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-hint *ngIf="vm.matHint">{{ vm.matHint }}</mat-hint>
+          <mat-error
+            *ngIf="controls.select.errors?.pattern && vm.matErrorPattern"
+          >
+            {{ vm.matErrorPattern }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              controls.select.errors &&
+              controls.select.errors?.required &&
+              vm.matErrorRequired
+            "
+          >
+            {{ vm.matErrorRequired }}
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </ng-container>
+  </div>
+</div>

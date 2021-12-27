@@ -1,0 +1,170 @@
+img {
+  width: 130px;
+  height: auto;
+}
+.cockpitimgsize {
+  height: 30px;
+
+  margin-top: 15px;
+}
+.blackline {
+  background-color: black;
+  height: 54px;
+}
+.imgCirclestyle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0%;
+}
+.iconStyle {
+  display: contents;
+}
+.center {
+  width: 100%;
+  &-text {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.space {
+  margin-left: 28%;
+  margin-right: 20%;
+}
+.col {
+  padding: 0px;
+}
+.connect {
+  height: 48.54px;
+  width: auto;
+  margin-right: 0px;
+  &-phone {
+    width: auto;
+    height: 43px;
+    margin-left: 15px;
+  }
+  &-p {
+    padding-top:16px
+  }
+}
+.container {
+  margin-top: 10%;
+}
+.marginP {
+  margin-top: 3%;
+}
+.content {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 60px;
+  &-2 {
+    margin-left: 33%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+///// styletext
+.info {
+  font-size: 20px;
+  color: #423f3f;
+  font: normal normal normal 20px/23px;
+  &-2 {
+    font-size: 18px;
+    color: #423f3f;
+  }
+  &-news {
+    font-size: 16px;
+    padding-top: 10%;
+    font-weight: bold;
+    color: black;
+  }
+  &-bottom {
+
+    padding-top: 2%;
+    font: 300 16px/23px Prompt;
+    letter-spacing: 0px;
+    color: #0666CC;
+  }
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 150px 45px 90px 30px 100px 10px 100px;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:600px) {
+  .content {
+    font-size: 18px;
+    font-weight: bold;
+    color: #423F3F;
+    line-height: 16px;
+    &-2 {
+      margin-left: 33%;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .connect {
+    height: 48.54px;
+    width: auto;
+    margin-right: 0px;
+    &-phone {
+      width: auto;
+      height: 43px;
+      margin-left: 15px !important;
+    }
+    &-p {
+      padding-top:16px
+    }
+  }
+
+  .info {
+    font-size: 16px;
+
+    color: #423f3f;
+    font-weight: bold;
+    &-2 {
+      font-size: 16px;
+      color: #423f3f;
+    }
+    &-news {
+      font-size: 16px;
+      padding-top: 35%;
+      font-weight: bold;
+      color: black;
+    }
+    &-bottom {
+      font-size: 16px;
+      color: #0666cc;
+      padding-top: 5%;
+    }
+  }
+
+  .grid-container{
+    display: grid;
+    grid-template-columns: 145px 50px 82px;
+    text-align: center;
+    justify-content: center;
+    &-2{
+      display: grid;
+      grid-template-columns: 50px 70px 50px 60px;
+    text-align: center;
+    justify-content: center;
+    }
+  }
+
+
+}

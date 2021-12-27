@@ -1,0 +1,367 @@
+<ng-container *ngIf="backend$ | async as back">
+
+<ng-container *ngIf="isWeb$ | async; else mobile">
+  <p class="marginP">สรุปข้อมูล</p>
+  <hr />
+  <div class="summary">
+    <p class="summary-h">โปรโมชั่น</p>
+    <div class="summary-content" [innerHTML]="back.info"></div>
+    <!-- <p class="summary-content">
+      "Together We’re Safe ไม่ว่าคุณจะเดินทางเมื่อไหร่ เราก็พร้อมดูแลคุณ"
+      รับส่วนลดทันที 1,000 บาท ในการซื้อสินค้ายาง Bridgestone 4 เส้น
+      ทุกรุ่นทุกขนาด ลงทะเบียนรับสิทธิ์ส่วนลดตั้งแต่ 25 ส.ค. - 31 ต.ค. 64
+      ใช้ส่วนลดได้ที่ Cockpit และ A.C.T. ทุกสาขา ภายใน 30 พ.ย. 64
+      <br />
+      (เมื่อลงทะเบียนเสร็จ จะได้รับ unique code เพื่อรับส่วนลดที่ร้าน)
+    </p> -->
+    <p class="summary-h">รายละเอียดและเงื่อนไขโปรโมชั่น</p>
+
+    <div>
+      <div [innerHTML]="back.detail"></div>
+      <!-- <p class="summary-content">
+        1. โปรโมชั่น “Together We’re Safe ไม่ว่าคุณจะเดินทางเมื่อไหร่
+        เราก็พร้อมดูแลคุณ” ลงทะเบียนเพื่อรับสิทธิ์ส่วนลด 1,000 บาท
+        สำหรับซื้อยางรถยนต์ Bridgestone 4 เส้น ทุกรุ่นทุกขนาด จำนวน 1,000 สิทธิ์
+        <br />
+        2. ท่านจะได้รับ SMS สิทธิ์ส่วนลด จากการลงทะเบียน
+        <br />
+        3. สงวนสิทธิ์เฉพาะรถยนต์พร้อมป้ายทะเบียนที่ลงทะเบียนไว้ และ
+        เฉพาะลูกค้าที่มาใช้สิทธิ์ด้วยตนเองเท่านั้น (จำกัด 1 คน/1 สิทธิ์ ต่อ 1
+        ทะเบียนรถยนต์) โดยแสดงบัตรประชาชน พร้อม SMS ที่ได้รับ ต่อพนักงาน ณ
+        ศูนย์บริการยางรถยนต์ COCKPIT หรือ A.C.T เพื่อใช้ส่วนลดดังกล่าว บริษัทฯ
+        ขอสงวนสิทธิทำการตรวจสอบข้อมูลตามที่ท่านลงทะเบียนไว้ในเว็บไซต์
+        และถือข้อมูลที่ลงทะเบียนไว้เป็นสำคัญ
+        <br />
+        4. ระยะเวลาการลงทะเบียนรับสิทธิ์ :
+        ท่านสามารถร่วมลงทะเบียนรับสิทธิ์ดังกล่าวได้ ตั้งแต่ 25 ส.ค. – 31 ต.ค. 64
+        เท่านั้น หรือจนกว่าจะเต็มครบจำนวนสิทธิ์ 5,000 สิทธิ์
+        <br />
+        ระยะเวลาการใช้สิทธิ์ : ท่านสามารถใช้สิทธิ์ดังกล่าวได้ ตั้งแต่ วันที่ 25
+        ส.ค.- 30 พ.ย. 64 เท่านั้น
+        <br />
+        6. “สิทธิ์ส่วนลด” จะไม่สามารถเปลี่ยนเป็นเงินสดในทุกกรณี
+        <br />
+        7. สินค้าซึ่งได้รับส่วนลดตามโปรโมชั่นนี้
+        ไม่สามารถร่วมรายการผ่อนชำระหรือโปรโมชั่นอื่นใดของธนาคารได้
+        <br />
+        <strong>
+          8. ขั้นตอนการ “ยืนยันสิทธิ์” (Verification)
+          จะต้องทำเมื่อท่านนำส่วนลดดังกล่าวไปใช้สิทธิ์
+          โดยกดยืนยันต่อหน้าเจ้าหน้าที่ ณ ศูนย์บริการ COCKPIT หรือ A.C.T
+          เท่านั้น หากมีการกดยืนยันสิทธิ์มาก่อน จะถือว่าสิทธิ์นั้นๆ ได้ใช้ไปแล้ว
+          และท่านไม่สามารถนำส่วนลดนี้มาเรียกร้องสิทธิ์ใดๆ จากบริษัทฯ ได้อีก
+        </strong>
+        <br />
+        9. เมื่อท่านใช้สิทธิ์แล้ว จะไม่สามารถลงทะเบียนใหม่หรือใช้สิทธิ์ซ้ำได้อีก
+        <br />
+        10. หากบริษัทฯ พบว่า ข้อมูลการลงทะเบียนของท่านไม่ถูกต้อง
+        หรือไม่ตรงกับความเป็นจริง บริษัทฯ
+        ขอสงวนสิทธิ์ในการตัดสิทธิ์การรับส่วนลดหรือสิทธ์การเข้ารับบริการดังกล่าวทันที
+        <br />
+        11. กรุณาตรวจสอบกับสาขาก่อนเข้ารับบริการ
+        เงื่อนไขรายการส่งเสริมการขายเป็นไปตามที่บริษัทฯ กำหนด
+        <br />
+        12. บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงส่วนลด/ เงื่อนไข
+        โดยมิต้องแจ้งให้ทราบล่วงหน้า
+        <br />
+        13. บริษัทฯ จัดเก็บข้อมูลส่วนบุคคลจากการลงทะเบียนของท่าน
+        เพื่อวัตถุประสงค์ในการรับส่วนลดนี้ และการประชาสัมพันธ์ข้อมูลการตลาด
+        การโฆษณาและการส่งเสริมการขาย ที่เกี่ยวข้องกับผลิตภัณฑ์ และ/หรือ บริการ
+        รวมถึงการประมวลผล วิเคราะห์ วางแผนทางการตลาด
+        เพื่อการปรับปรุงผลิตภัณฑ์และบริการใดๆ โปรดศึกษาราย
+        <a href="https://cockpit.co.th/privacy"
+          >https://cockpit.co.th/privacy</a
+        >
+      </p> -->
+    </div>
+
+    <hr style="margin: 40px 0px 10px 0px" />
+
+    <!-- summary -->
+    <p class="summary-h-sub">ข้อมูลทั่วไป</p>
+
+    <div class="row">
+      <div class="col">
+        <p class="summary-content">
+          ชื่อ : {{ formInfo.get("firstname")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          นามสกุล : {{ formInfo.get("lastname")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          เบอร์โทรศัพท์ : {{ formInfo.get("phonenumber")!.value }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <p class="summary-content">
+          ทะเบียนรถที่จะเข้ารับบริการ : {{ formInfo.get("registration")!.value }}
+        </p>
+      </div>
+      <div class="col-4">
+        <p class="summary-content">
+          จังหวัดของเลขทะเบียนรถ:
+          {{ formInfo.get("provinceregistration")!.value }}
+        </p>
+      </div>
+    </div>
+
+    <p class="summary-h-sub">ข้อมูลรถยนต์</p>
+
+    <div class="row">
+      <div class="col">
+        <p class="summary-content">
+          ยี่ห้อรถยนต์: {{ formCarinfo.get("carband")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          รุ่นรถยนต์: {{ formCarinfo.get("carmodel")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          ปีรถยนต์: {{ formCarinfo.get("caryear")!!.value }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="summary-content">
+          รุ่นย่อยรถยนต์ (ถ้ามี):
+          {{ formCarinfo.get("carmodelabbreviation")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          ยี่ห้อยางที่ใช้ปัจจุบัน: {{ formCarinfo.get("tireband")!.value }}
+        </p>
+      </div>
+      <div class="col">
+        <p class="summary-content">
+          ขนาดยางหน้า: {{ formCarinfo.get("frontTiresize")!.value }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <p class="summary-content">
+          ขนาดยางหลัง: {{ formCarinfo.get("backTiresize")!.value }}
+        </p>
+      </div>
+    </div>
+
+    <p class="summary-h-sub">ศูนย์บริการ</p>
+    <p class="summary-content">{{ branchName }}</p>
+  </div>
+  <br />
+
+  <p class="summary-lower">
+    ท่านจะได้รับ SMS รหัสส่วนลดเมื่อกดยืนยันการลงทะเบียน ขอสงวนสิทธิ์ 1
+    สิทธิ์/ท่าน ตลอดระยะเวลาโปรโมชั่น
+  </p>
+  <br />
+  <p class="summary-lower error" [innerHtml]="messageError"></p>
+
+  <div class="btn-twobtn center center-item">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-back" mat-button matStepperPrevious>
+          ย้อนกลับ
+        </button>
+      </div>
+      <div class="col">
+        <ng-container
+          *ngIf="disableSubmitButton$ | async as disabled; else notDisabled"
+        >
+          <button
+            class="btn {{ disabled && 'disabled-btn' }}"
+            [disabled]="disabled"
+            mat-button
+            (click)="onSubmit()"
+          >
+            ยืนยัน
+          </button>
+        </ng-container>
+        <ng-template #notDisabled>
+          <button class="btn" mat-button (click)="onSubmit()">ยืนยัน</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- View Mobile -->
+
+<ng-template #mobile>
+  <p class="marginP">สรุปข้อมูล</p>
+  <hr />
+  <div class="summary">
+    <p class="summary-h">โปรโมชั่น</p>
+    <p class="summary-content">
+      Together We’re Safe ไม่ว่าคุณจะเดินทางเมื่อไหร่ เราก็พร้อมดูแลคุณ
+      รับส่วนลดทันที 1,000 บาท ในการซื้อสินค้ายาง Bridgestone 4 เส้น
+      ทุกรุ่นทุกขนาด ลงทะเบียนรับสิทธิ์ส่วนลดตั้งแต่ 25 ส.ค. - 31 ต.ค. 64
+      ใช้ส่วนลดได้ที่ Cockpit และ A.C.T. ทุกสาขา ภายใน 30 พ.ย. 64
+      <br />
+      (เมื่อลงทะเบียนเสร็จ จะได้รับ unique code เพื่อรับส่วนลดที่ร้าน)
+    </p>
+    <p class="summary-h">รายละเอียดและเงื่อนไขโปรโมชั่น</p>
+
+    <div>
+      <p class="summary-content">
+        1. โปรโมชั่น “Together We’re Safe ไม่ว่าคุณจะเดินทางเมื่อไหร่
+        เราก็พร้อมดูแลคุณ” ลงทะเบียนเพื่อรับสิทธิ์ส่วนลด 1,000 บาท
+        สำหรับซื้อยางรถยนต์ Bridgestone 4 เส้น ทุกรุ่นทุกขนาด จำนวน 1,000 สิทธิ์
+        <br />
+        2. ท่านจะได้รับ SMS สิทธิ์ส่วนลด จากการลงทะเบียน
+        <br />
+        3. สงวนสิทธิ์เฉพาะรถยนต์พร้อมป้ายทะเบียนที่ลงทะเบียนไว้ และ
+        เฉพาะลูกค้าที่มาใช้สิทธิ์ด้วยตนเองเท่านั้น (จำกัด 1 คน/1 สิทธิ์ ต่อ 1
+        ทะเบียนรถยนต์) โดยแสดงบัตรประชาชน พร้อม SMS ที่ได้รับ ต่อพนักงาน ณ
+        ศูนย์บริการยางรถยนต์ COCKPIT หรือ A.C.T เพื่อใช้ส่วนลดดังกล่าว บริษัทฯ
+        ขอสงวนสิทธิทำการตรวจสอบข้อมูลตามที่ท่านลงทะเบียนไว้ในเว็บไซต์
+        และถือข้อมูลที่ลงทะเบียนไว้เป็นสำคัญ
+        <br />
+        4. ระยะเวลาการลงทะเบียนรับสิทธิ์ :
+        ท่านสามารถร่วมลงทะเบียนรับสิทธิ์ดังกล่าวได้ ตั้งแต่ 25 ส.ค. – 31 ต.ค. 64
+        เท่านั้น หรือจนกว่าจะเต็มครบจำนวนสิทธิ์ 5,000 สิทธิ์
+        <br />
+        ระยะเวลาการใช้สิทธิ์ : ท่านสามารถใช้สิทธิ์ดังกล่าวได้ ตั้งแต่ วันที่ 25
+        ส.ค.- 30 พ.ย. 64 เท่านั้น
+        <br />
+        6. “สิทธิ์ส่วนลด” จะไม่สามารถเปลี่ยนเป็นเงินสดในทุกกรณี
+        <br />
+        7. สินค้าซึ่งได้รับส่วนลดตามโปรโมชั่นนี้
+        ไม่สามารถร่วมรายการผ่อนชำระหรือโปรโมชั่นอื่นใดของธนาคารได้
+        <br />
+        <strong>
+          8. ขั้นตอนการ “ยืนยันสิทธิ์” (Verification)
+          จะต้องทำเมื่อท่านนำส่วนลดดังกล่าวไปใช้สิทธิ์
+          โดยกดยืนยันต่อหน้าเจ้าหน้าที่ ณ ศูนย์บริการ COCKPIT หรือ A.C.T
+          เท่านั้น หากมีการกดยืนยันสิทธิ์มาก่อน จะถือว่าสิทธิ์นั้นๆ ได้ใช้ไปแล้ว
+          และท่านไม่สามารถนำส่วนลดนี้มาเรียกร้องสิทธิ์ใดๆ จากบริษัทฯ ได้อีก
+        </strong>
+        <br />
+        9. เมื่อท่านใช้สิทธิ์แล้ว จะไม่สามารถลงทะเบียนใหม่หรือใช้สิทธิ์ซ้ำได้อีก
+        <br />
+        10. หากบริษัทฯ พบว่า ข้อมูลการลงทะเบียนของท่านไม่ถูกต้อง
+        หรือไม่ตรงกับความเป็นจริง บริษัทฯ
+        ขอสงวนสิทธิ์ในการตัดสิทธิ์การรับส่วนลดหรือสิทธ์การเข้ารับบริการดังกล่าวทันที
+        <br />
+        11. กรุณาตรวจสอบกับสาขาก่อนเข้ารับบริการ
+        เงื่อนไขรายการส่งเสริมการขายเป็นไปตามที่บริษัทฯ กำหนด
+        <br />
+        12. บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงส่วนลด/ เงื่อนไข
+        โดยมิต้องแจ้งให้ทราบล่วงหน้า
+        <br />
+        13. บริษัทฯ จัดเก็บข้อมูลส่วนบุคคลจากการลงทะเบียนของท่าน
+        เพื่อวัตถุประสงค์ในการรับส่วนลดนี้ และการประชาสัมพันธ์ข้อมูลการตลาด
+        การโฆษณาและการส่งเสริมการขาย ที่เกี่ยวข้องกับผลิตภัณฑ์ และ/หรือ บริการ
+        รวมถึงการประมวลผล วิเคราะห์ วางแผนทางการตลาด
+        เพื่อการปรับปรุงผลิตภัณฑ์และบริการใดๆ โปรดศึกษารายละเอียดที่
+        <a href="https://cockpit.co.th/privacy"
+          >https://cockpit.co.th/privacy</a
+        >
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- summary -->
+    <p class="summary-h-sub">ข้อมูลทั่วไป</p>
+
+    <p class="summary-content">ชื่อ : {{ formInfo.get("firstname")!.value }}</p>
+
+    <p class="summary-content">
+      นามสกุล : {{ formInfo.get("lastname")!.value }}
+    </p>
+
+    <p class="summary-content">
+      เบอร์โทรศัพท์ : {{ formInfo.get("phonenumber")!.value }}
+    </p>
+
+    <p class="summary-content">
+      ทะเบียนรถยนต์ : {{ formInfo.get("registration")!.value }}
+    </p>
+
+    <p class="summary-content">
+      จังหวัดรถยนต์: {{ formInfo.get("provinceregistration")!.value }}
+    </p>
+
+    <p class="summary-h-sub">ข้อมูลรถยนต์</p>
+
+    <p class="summary-content">
+      ยี่ห้อรถยนต์: {{ formCarinfo.get("carband")!.value }}
+    </p>
+
+    <p class="summary-content">
+      รุ่นรถยนต์: {{ formCarinfo.get("carmodel")!.value }}
+    </p>
+
+    <p class="summary-content">
+      ปีรถยนต์: {{ formCarinfo.get("caryear")!.value }}
+    </p>
+
+    <p class="summary-content">
+      รุ่นย่อยรถยนต์ (ถ้ามี):
+      {{ formCarinfo.get("carmodelabbreviation")!.value }}
+    </p>
+
+    <p class="summary-content">
+      ยี่ห้อยางที่ใช้ปัจจุบัน: {{ formCarinfo.get("tireband")!.value }}
+    </p>
+
+    <p class="summary-content">
+      ขนาดยางหน้า: {{ formCarinfo.get("frontTiresize")!.value }}
+    </p>
+
+    <p class="summary-content">
+      ขนาดยางหลัง: {{ formCarinfo.get("backTiresize")!.value }}
+    </p>
+
+    <p class="summary-h-sub">ศูนย์บริการ</p>
+    <p class="summary-content">{{ branchName }}</p>
+  </div>
+  <br />
+
+  <p class="summary-lower">
+    ท่านจะได้รับ SMS รหัสส่วนลดเมื่อกดยืนยันการลงทะเบียน ขอสงวนสิทธิ์ 1
+    สิทธิ์/ท่าน ตลอดระยะเวลาโปรโมชั่น
+  </p>
+  <br />
+  <p class="summary-lower error" [innerHtml]="messageError"></p>
+
+  <div class="btn-twobtn center center-item">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-back" mat-button matStepperPrevious>
+          ย้อนกลับ
+        </button>
+      </div>
+      <div class="col">
+        <ng-container
+          *ngIf="disableSubmitButton$ | async as disabled; else notDisabled"
+        >
+          <button
+            class="btn {{ disabled && 'disabled-btn' }}"
+            [disabled]="disabled"
+            mat-button
+            (click)="onSubmit()"
+          >
+            ยืนยัน
+          </button>
+        </ng-container>
+        <ng-template #notDisabled>
+          <button class="btn" mat-button (click)="onSubmit()">ยืนยัน</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-template>
+</ng-container>

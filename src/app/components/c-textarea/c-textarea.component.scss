@@ -1,0 +1,84 @@
+.gnext-v2-other-reusable-textarea-a {
+  .cover-textarea {
+    & * {
+      max-width: 100%;
+    }
+    form {
+      mat-form-field {
+        &.has-error,
+        &.mat-form-field-invalid {
+          .mat-form-field-wrapper {
+            .mat-form-field-flex {
+              textarea {
+                border: 0.5px solid red !important;
+              }
+            }
+          }
+        }
+        .mat-form-field-wrapper {
+          padding: 0;
+          margin: 0;
+          .mat-form-field-flex {
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            background-color: transparent;
+            .mat-form-field-infix {
+              padding: 0;
+              margin: 0;
+              border-width: 0;
+              mat-label {
+                font-size: 12px;
+                line-height: 12px;
+                font-weight: 300;
+                color: black;
+                .red {
+                  color: red;
+                }
+              }
+              textarea {
+                padding: 7.5px;
+                margin: 7.5px 0 0 0;
+                font-size: 12px;
+                font-weight: 300;
+                line-height: 15px;
+                border: 0.5px solid #8d8d8d;
+                border-radius: 3.25px;
+                -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                -moz-box-sizing: border-box; /* Firefox, other Gecko */
+                box-sizing: border-box; /* Opera/IE 8+ */
+              }
+              .mat-form-field-label-wrapper {
+                padding: 0;
+                margin: 0;
+                top: 0;
+                opacity: 0;
+                display: none;
+                label {
+                  &.mat-form-field-label {
+                  }
+                }
+              }
+            }
+          }
+          .mat-form-field-underline {
+            bottom: 0;
+            opacity: 0;
+            &::before {
+            }
+            .mat-form-field-ripple {
+            }
+          }
+          .mat-form-field-subscript-wrapper {
+            padding: 0 7.5px;
+            top: calc(100% + -3.25px);
+            .mat-form-field-hint-wrapper {
+              .mat-form-field-hint-spacer {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

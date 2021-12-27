@@ -1,0 +1,27 @@
+label {
+  margin-top: 5%;
+  // margin-bottom: unset;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: -19px;
+}
+.example-full-width {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline {
+
+  .mat-form-field-infix {
+    padding: 4px 0 9px 0;
+    margin-top: -0.27em;
+  }
+}
+
+.required-asterisk{
+  color: #FF0006;
+  font-weight: normal;
+  font-size: 1.2em;
+}

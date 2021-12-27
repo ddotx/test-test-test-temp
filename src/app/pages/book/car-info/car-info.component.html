@@ -1,0 +1,172 @@
+<ng-container *ngIf="backend$ | async as back">
+  <ng-container *ngIf="isWeb$ | async; else mobile">
+    <form [formGroup]="formCarinfo">
+      <ng-template matStepLabel> <p>ข้อมูลรถยนต์</p> </ng-template>
+      <p class="marginP">ข้อมูลรถยนต์</p>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <c-mat-select
+            label="{{ back.car_brand.label }}"
+            placeholder="เลือกยี่ห้อรถยนต์"
+            [options]="optionCarsBrands$"
+            [control]="getFormCarInfoByName('carband')"
+            [required]="true"
+          ></c-mat-select>
+        </div>
+        <div class="col">
+          <c-mat-select
+            label="{{ back.car_model.label }}"
+            placeholder="เลือกรุ่นรถยนต์"
+            [options]="optionCarsClasses$"
+            [control]="getFormCarInfoByName('carmodel')"
+            [required]="true"
+          ></c-mat-select>
+        </div>
+        <div class="col">
+          <c-mat-select
+            label="{{ back.car_sub_model.label }}"
+            placeholder="เลือกรุ่นย่อยรถยนต์"
+            [options]="optionCarsModel$"
+            [control]="getFormCarInfoByName('carmodelabbreviation')"
+          ></c-mat-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <c-mat-select
+            label="{{ back.car_year.label }}"
+            placeholder="เลือกปีรถยนต์"
+            [options]="optionCarsYears$"
+            [control]="getFormCarInfoByName('caryear')"
+            [required]="true"
+          ></c-mat-select>
+        </div>
+
+        <div class="col">
+          <c-mat-select
+            label="{{ back.car_current_tire_brand.label }}"
+            placeholder="เลือกยี่ห้อยางที่ใช้ปัจจุบัน"
+            [required]="true"
+            [options]="tireOptions$"
+            [control]="getFormCarInfoByName('tireband')"
+          ></c-mat-select>
+        </div>
+        <div class="col">
+          <c-input
+            label="{{ back.car_tire_front_size.label }}"
+            [control]="getFormCarInfoByName('frontTiresize')"
+            [inputType]="'text'"
+          ></c-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <c-input
+            label="{{ back.car_tire_rear_size.label }}"
+            [control]="getFormCarInfoByName('backTiresize')"
+            [inputType]="'text'"
+          ></c-input>
+        </div>
+      </div>
+
+      <div class="btn-twobtn center center-item">
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-back"
+              (click)="onBackStep()"
+              mat-button
+              matStepperPrevious
+            >
+              ย้อนกลับ
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn" [disabled]="isInStep" mat-button matStepperNext>
+              ถัดไป
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-template #mobile>
+    <form [formGroup]="formCarinfo">
+      <ng-template matStepLabel> <p>ข้อมูลรถยนต์</p> </ng-template>
+      <p class="marginP">ข้อมูลรถยนต์</p>
+      <hr />
+
+      <c-mat-select
+        label="{{ back.car_brand.label }}"
+        placeholder="เลือกยี่ห้อรถยนต์"
+        [options]="optionCarsBrands$"
+        [control]="getFormCarInfoByName('carband')"
+        [required]="true"
+      ></c-mat-select>
+      <c-mat-select
+        label="{{ back.car_model.label }}"
+        placeholder="เลือกรุ่นรถยนต์"
+        [options]="optionCarsClasses$"
+        [control]="getFormCarInfoByName('carmodel')"
+        [required]="true"
+      ></c-mat-select>
+      <c-mat-select
+        label="{{ back.car_sub_model.label }}"
+        placeholder="เลือกรุ่นย่อยรถยนต์"
+        [options]="optionCarsModel$"
+        [control]="getFormCarInfoByName('carmodelabbreviation')"
+      ></c-mat-select>
+      <c-mat-select
+        label="{{ back.car_year.label }}"
+        placeholder="เลือกปีรถยนต์"
+        [options]="optionCarsYears$"
+        [control]="getFormCarInfoByName('caryear')"
+        [required]="true"
+      ></c-mat-select>
+
+      <c-mat-select
+        label="{{ back.car_current_tire_brand.label }}"
+        placeholder="เลือกยี่ห้อยางที่ใช้ปัจจุบัน"
+        [required]="true"
+        [options]="tireOptions$"
+        [control]="getFormCarInfoByName('tireband')"
+      ></c-mat-select>
+
+      <c-input
+        label="{{ back.car_tire_front_size.label }}"
+        [control]="getFormCarInfoByName('frontTiresize')"
+        [inputType]="'text'"
+      ></c-input>
+
+      <c-input
+        label="{{ back.car_tire_rear_size.label }}"
+        [control]="getFormCarInfoByName('backTiresize')"
+        [inputType]="'text'"
+      ></c-input>
+
+      <div class="btn-twobtn center center-item">
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-back"
+              (click)="onBackStep()"
+              mat-button
+              matStepperPrevious
+            >
+              ย้อนกลับ
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn" [disabled]="isInStep" mat-button matStepperNext>
+              ถัดไป
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</ng-container>

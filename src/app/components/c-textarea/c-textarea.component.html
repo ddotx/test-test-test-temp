@@ -1,0 +1,50 @@
+<div class="gnext-v2-other-reusable-textarea-a">
+  <div class="cover-textarea" [style.padding]="padding" [style.margin]="margin">
+    <ng-container *ngIf="vm$ | async as vm">
+      <form novalidate [formGroup]="selectFormGroup">
+        <mat-form-field
+          appearance="fill"
+          [style.width]="width"
+          [ngClass]="isFieldValid()"
+        >
+          <ng-container *ngIf="vm.label">
+            <mat-label
+              >{{ vm.label
+              }}<span class="red" *ngIf="vm.required">*</span></mat-label
+            >
+          </ng-container>
+          <textarea
+            [rows]="rows"
+            [cols]="cols"
+            [ngStyle]="ngStyles"
+            matInput
+            type="text"
+            [mask]="mask"
+            [thousandSeparator]="thousandSeparator"
+            [style.textAlign]="textAlign"
+            [style.background]="background"
+            [style.color]="color"
+            formControlName="input"
+            [placeholder]="vm.placeholder"
+            (ngModelChange)="onModelChange($event)"
+          ></textarea>
+          <mat-hint *ngIf="vm.matHint">{{ vm.matHint }}</mat-hint>
+          <mat-error
+            *ngIf="controls.input.errors?.pattern && vm.matErrorPattern"
+          >
+            {{ vm.matErrorPattern }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              controls.input.errors &&
+              controls.input.errors?.required &&
+              vm.matErrorRequired
+            "
+          >
+            {{ vm.matErrorRequired }}
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </ng-container>
+  </div>
+</div>

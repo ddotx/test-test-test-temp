@@ -1,0 +1,278 @@
+<div class="gnext-main-branchs-search-a">
+  <ng-container *ngIf="isWeb$ | async; else mobile">
+    <ng-container *ngIf="vm$ | async as vm">
+      <mat-card>
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div gnextColumn="12" gnextPadding="0 7.5px">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="3" gnextPadding="0">
+                <div style="margin-top: -16px !important">
+                  <c-input-v2
+                    [disabled]="true"
+                    class="fontsize"
+                    [padding]="'0'"
+                    [height]="'40px'"
+                    [margin]="'0'"
+                    [width]="'100%'"
+                    [color]="'black'"
+                    [background]="'white'"
+                    [ngStyles]="{
+                      margin: '0',
+                      border: '1px solid #d8d6d6',
+                      padding: '0.375rem',
+                      'font-size': '18px',
+                      'line-height': '30px',
+                      'border-radius': '5px 0px 0px 5px'
+                    }"
+                    placeholder="ค้นหาจากชื่อศูนย์บริการ"
+                    (getChange)="onSearchText($event)"
+                  >
+                  </c-input-v2>
+                  <!-- <c-select
+                    [padding]="'0'"
+                    [height]="'40px'"
+                    [margin]="'0'"
+                    [width]="'100%'"
+                    [background]="'white'"
+                    [ngStyles]="{
+                      border: '1px solid #d8d6d6',
+                      padding: '0 0.375rem',
+                      'font-size': '18px',
+                      'border-radius': '5px 0px 0px 5px'
+                    }"
+                    [option]="vm.search.typeId"
+                    [optionArray]="vm.search.search"
+                    (getSelect)="sendTypeId($event)"
+                  >
+                  </c-select> -->
+                </div>
+              </div>
+              <!-- type-0 -->
+              <div
+                gnextColumn="3"
+                gnextPadding="0"
+                [ngClass]="{ 'display-hide': vm.search.typeId !== 0 }"
+              >
+                <input
+                  style="margin-left: -1px"
+                  class="cover-search-address fontsize"
+                  #searchAddress
+                  type="text"
+                  [formControl]="formSearchAddress"
+                  placeholder="ค้นหาศูนย์บริการ"
+                />
+              </div>
+              <!-- type-1 -->
+              <ng-container *ngIf="vm.search.typeId === 1">
+                <div
+                  style="margin-top: -16px !important"
+                  gnextColumn="3"
+                  gnextPadding="0"
+                >
+                  <c-input-v2
+                    class="fontsize"
+                    [padding]="'0'"
+                    [height]="'40px'"
+                    [margin]="'0'"
+                    [width]="'100%'"
+                    [color]="'black'"
+                    [background]="'white'"
+                    [ngStyles]="{
+                      margin: '0',
+                      border: '1px solid #d8d6d6',
+                      'border-left-width': '0',
+                      padding: '0.375rem',
+                      'font-size': '18px',
+                      'line-height': '30px',
+                      'border-radius': '0px 5px 5px 0px'
+                    }"
+                    placeholder="ค้นหาศูนย์บริการ"
+                    (getChange)="onSearchText($event)"
+                  >
+                  </c-input-v2>
+                </div>
+              </ng-container>
+              <div gnextColumn="3" gnextPadding="0 22.5px 0 17.5px">
+                <c-button
+                  [padding]="'0 15px'"
+                  [margin]="'0'"
+                  [borderWidth]="'0'"
+                  [width]="'100%'"
+                  [height]="'40px'"
+                  [background]="'#FFF100'"
+                  [color]="'#333333'"
+                  [fontSize]="'16px'"
+                  [fontWeight]="'500'"
+                  [ngStyles]="{ 'border-radius': '4px' }"
+                  [text]="'ค้นหา'"
+                  (onclick)="
+                    onSendSearch(
+                      vm.search.typeId,
+                      vm.lat,
+                      vm.lng,
+                      vm.search_text
+                    )
+                  "
+                >
+                </c-button>
+              </div>
+              <div
+                gnextColumn="3"
+                gnextPadding="0 7.5px 0 22.5px"
+                style="position: relative"
+              >
+                <div class="cover-or"></div>
+                <div class="cover-button-location">
+                  <button (click)="onGetPosition()">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                      >near_me</mat-icon
+                    >
+                    ศูนย์บริการใกล้ฉัน
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+
+  <!-- Mobile -->
+  <ng-template #mobile>
+    <ng-container *ngIf="vm$ | async as vm">
+      <mat-card>
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div gnextColumn="12">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="12">
+                <c-input-v2
+                  [disabled]="true"
+                  [padding]="'0'"
+                  [height]="'40px'"
+                  [margin]="'0 0 15px 0'"
+                  [width]="'100%'"
+                  [color]="'black'"
+                  [background]="'white'"
+                  [ngStyles]="{
+                    border: '1px solid #d8d6d6',
+                    padding: '0 0.375rem',
+                    'line-height': '30px',
+                    'font-size': '12px',
+                    'border-radius': '5px 0px 0px 5px'
+                  }"
+                  placeholder="ค้นหาจากชื่อศูนย์บริการ"
+                  (getChange)="onSearchText($event)"
+                >
+                </c-input-v2>
+
+                <!-- <c-select
+                  [padding]="'0'"
+                  [height]="'40px'"
+                  [margin]="'0 0 15px 0'"
+                  [width]="'100%'"
+                  [background]="'white'"
+                  [ngStyles]="{
+                    border: '1px solid #d8d6d6',
+                    padding: '0 0.375rem',
+                    'font-size': '12px',
+                    'border-radius': '5px 0px 0px 5px'
+                  }"
+                  [option]="vm.search.typeId"
+                  [optionArray]="vm.search.search"
+                  (getSelect)="sendTypeId($event)"
+                >
+                </c-select> -->
+              </div>
+              <!-- type-0 -->
+              <div
+                gnextColumn="12"
+                [ngClass]="{ 'display-hide': vm.search.typeId !== 0 }"
+              >
+                <input
+                  class="cover-search-address fontsize"
+                  #searchAddress
+                  type="text"
+                  [formControl]="formSearchAddress"
+                  [placeholder]="'ค้นหาศูนย์บริการ'"
+                />
+              </div>
+              <!-- type-1 -->
+              <ng-container *ngIf="vm.search.typeId === 1">
+                <div
+                  style="
+                    margin-top: -16px !important;
+                    margin-bottom: -18px !important;
+                  "
+                  gnextColumn="12"
+                >
+                  <c-input-v2
+                    class="fontsize"
+                    [padding]="'0'"
+                    [height]="'40px'"
+                    [margin]="'0 0 15px 0'"
+                    [width]="'100%'"
+                    [color]="'black'"
+                    [background]="'white'"
+                    [ngStyles]="{
+                      margin: '0',
+                      border: '1px solid #d8d6d6',
+                      padding: '0 0.375rem',
+                      'font-size': '12px',
+                      'line-height': '30px',
+                      'border-radius': '5px'
+                    }"
+                    [placeholder]="'ค้นหาศูนย์บริการ'"
+                    (getChange)="onSearchText($event)"
+                  >
+                  </c-input-v2>
+                </div>
+              </ng-container>
+              <div
+                style="margin-top: -11px !important"
+                gnextColumn="12"
+                style="margin-top: 24px"
+              >
+                <c-button
+                  [padding]="'0 15px'"
+                  [margin]="'0 0 7.5px  0 '"
+                  [borderWidth]="'0'"
+                  [width]="'100%'"
+                  [height]="'40px'"
+                  [background]="'#FFF100'"
+                  [color]="'#333333'"
+                  [fontSize]="'16px'"
+                  [fontWeight]="'500'"
+                  [ngStyles]="{ 'border-radius': '4px' }"
+                  [text]="'ค้นหา'"
+                  (onclick)="
+                    onSendSearch(
+                      vm.search.typeId,
+                      vm.lat,
+                      vm.lng,
+                      vm.search_text
+                    )
+                  "
+                >
+                </c-button>
+              </div>
+              <div gnextColumn="12">
+                <div class="cover-or full"></div>
+              </div>
+              <div gnextColumn="12">
+                <div class="cover-button-location">
+                  <button (click)="onGetPosition()">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                      >near_me</mat-icon
+                    >
+                    ศูนย์บริการใกล้ฉัน
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </ng-template>
+</div>

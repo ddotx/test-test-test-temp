@@ -1,0 +1,33 @@
+<!-- <label class="label"
+  >{{ label
+  }}<span class="required-asterisk" *ngIf="control.errors?.required"
+    >*</span
+  ></label
+> -->
+<!-- <form class="example-form">
+  <mat-form-field class="example-full-width" appearance="outline" style="padding: -7px;">
+    <input
+      type="text"
+      placeholder="เลือกจังหวัด"
+      matInput
+      [formControl]="control"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions$ | async"
+        [value]="option.th"
+      >
+        {{ option.th }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form> -->
+
+<c-mat-select
+  [label]="label"
+  placeholder="เลือกจังหวัด"
+  [control]="control"
+  [options]="options$"
+  [required]="true"
+></c-mat-select>

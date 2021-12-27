@@ -1,0 +1,127 @@
+<div class="blackline center center-text">
+  <img
+    src="assets/logo_cockpit.png"
+    alt="logo_cockpit"
+    class="cockpitimgsize"
+  />
+</div>
+
+<div class="marginP">
+  <information-panel></information-panel>
+</div>
+
+<ng-container *ngIf="isWeb$ | async; else mobile">
+  <div class="container">
+    <img
+      class="full imgCirclestyle"
+      src="assets/icon complete.png"
+      alt="complete"
+    />
+
+    <div class="marginP">
+      <p class="content center-text">
+        ท่านได้ใช้สิทธิ์รับส่วนลด1,000 บาท
+        <br />
+        <br />
+        สำหรับซื้อสินค้ายาง Bridgestone 4 เส้น เรียบร้อยแล้ว
+      </p>
+
+      <p class="info-news center-text">
+        ติดตามข่าวสารโปรโมชั่นและสิทธิพิเศษอื่นๆได้ที่
+      </p>
+      <div class="grid-container">
+        <p class="connect-p">www.cockpit.co.th</p>
+
+        <img class="connect" src="assets/social-fb.png" alt="iconFb" />
+
+        <p class="connect-p">@CockpitTH</p>
+
+        <img class="connect" src="assets/social-line.png" alt="iconLine" />
+
+        <p class="connect-p">@Cockpit</p>
+
+        <img class="connect" src="assets/phone.png" alt="iconphone" />
+
+        <p class="connect-p">1369</p>
+      </div>
+
+      <!-- <div class="row space">
+        <div class="col">
+          <p class="connect-p">www.cockpit.co.th</p>
+        </div>
+        <div class="col">
+          <img class="connect" src="assets/social-fb.png" alt="iconFb" />
+        </div>
+        <div class="col">
+          <p class="connect-p">@CockpitTH</p>
+        </div>
+        <div class="col">
+          <img class="connect" src="assets/social-line.png" alt="iconLine" />
+        </div>
+        <div class="col">
+          <p class="connect-p">@Cockpit</p>
+        </div>
+        <div class="col">
+          <img class="connect-phone" src="assets/phone.png" alt="iconphone" />
+        </div>
+        <div class="col">
+            <p class="connect-p">1369</p>
+        </div>
+      </div> -->
+
+      <p class="info-bottom center-text">
+        #Cockpitเป็นกันเองกับทุกคัน
+        <br />
+        #คุ้มครบไวอุ่นใจที่Cockpit
+      </p>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #mobile>
+  <div class="container">
+    <img
+      class="full imgCirclestyle"
+      src="assets/icon complete.png"
+      alt="complete"
+    />
+
+    <div class="marginP">
+      <p class="content center-text" style="padding-top: 3%">
+        ท่านได้ใช้สิทธิ์รับส่วนลด1,000 บาท
+        <br />
+        <br />
+        สำหรับซื้อสินค้ายาง Bridgestone 4 เส้น
+        <br />
+        <br />
+        เรียบร้อยแล้ว
+      </p>
+
+      <p class="info-news center-text">
+        ติดตามข่าวสารโปรโมชั่นและสิทธิพิเศษอื่นๆได้ที่
+      </p>
+      <div class="grid-container">
+        <p class="connect-p">www.cockpit.co.th</p>
+
+        <img class="connect" src="assets/social-fb.png" alt="iconFb" />
+
+        <p class="connect-p">@CockpitTH</p>
+      </div>
+      <div class="grid-container-2">
+        <img class="connect" src="assets/social-line.png" alt="iconLine" />
+
+        <p class="connect-p">@Cockpit</p>
+
+        <img class="connect connect-phone" src="assets/phone.png" alt="iconphone" />
+
+        <p class="connect-p">1369</p>
+      </div>
+
+      <p class="info-bottom center-text">
+        #Cockpitเป็นกันเองกับทุกคัน
+        <br>
+        #คุ้มครบไวอุ่นใจที่Cockpit
+      </p>
+    </div>
+  </div>
+</ng-template>

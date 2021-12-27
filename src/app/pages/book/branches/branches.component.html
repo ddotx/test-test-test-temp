@@ -1,0 +1,70 @@
+<ng-container *ngIf="isWeb$ | async; else mobile">
+  <p class="marginP">เลือกศูนย์บริการ</p>
+  <hr style="margin-bottom: 35px" />
+  <ng-container *ngIf="salesforceQueryForms$ | async as salesforceQueryForm">
+    <ng-container *ngIf="salesforceQueryForm.branch_name.length">
+      <div
+        gnextColumn="12"
+        gnextPadding="0 7.5px"
+        *ngFor="let item of salesforceQueryForm.branch_name; index as i"
+      >
+        <app-main-branches
+          (branchId)="branchId.emit($event)"
+          (getBranchsTitle)="updateBranch(i, item, $event)"
+        >
+        </app-main-branches>
+      </div>
+    </ng-container>
+  </ng-container>
+  <hr />
+  <div class="btn-twobtn center center-item">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-back" mat-button matStepperPrevious>
+          ย้อนกลับ
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn" [disabled]="isInStep" mat-button matStepperNext>
+          ถัดไป
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Mobile -->
+<ng-template #mobile>
+  <p class="marginP"><b>เลือกศูนย์บริการ</b></p>
+  <hr />
+  <ng-container *ngIf="salesforceQueryForms$ | async as salesforceQueryForm">
+    <ng-container *ngIf="salesforceQueryForm.branch_name.length">
+      <div
+        gnextColumn="12"
+        gnextPadding="0 7.5px"
+        *ngFor="let item of salesforceQueryForm.branch_name; index as i"
+      >
+        <app-main-branches
+          (branchId)="branchId.emit($event)"
+          (getBranchsTitle)="updateBranch(i, item, $event)"
+        >
+        </app-main-branches>
+      </div>
+    </ng-container>
+  </ng-container>
+  <hr />
+  <div class="btn-twobtn center center-item">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-back" mat-button matStepperPrevious>
+          ย้อนกลับ
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn" [disabled]="isInStep" mat-button matStepperNext>
+          ถัดไป
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

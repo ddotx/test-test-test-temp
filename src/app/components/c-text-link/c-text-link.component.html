@@ -1,0 +1,47 @@
+<div class="gnext-v2-other-reusable-a">
+  <ng-container *ngIf="hrefLink">
+    <div class="cover-button">
+      <a
+        [href]="hrefType + hrefLink"
+        [target]="target"
+        [style.borderWidth]="borderWidth"
+        [style.borderStyle]="borderStyle"
+        [style.borderColor]="borderColor"
+        [style.padding]="padding"
+        [style.margin]="margin"
+        [style.width]="width"
+        [style.height]="height"
+        [style.textAlign]="textAlign"
+        [style.color]="color"
+        [style.fontSize]="fontSize"
+        [style.fontWeight]="fontWeight"
+        [style.background]="background"
+        [ngStyle]="ngStyles"
+      >
+        {{ text }}
+      </a>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!hrefLink">
+    <div class="cover-button">
+      <a
+        [routerLink]="routerLinks"
+        [style.borderWidth]="borderWidth"
+        [style.borderStyle]="borderStyle"
+        [style.borderColor]="borderColor"
+        [style.padding]="padding"
+        [style.margin]="margin"
+        [style.width]="width"
+        [style.height]="height"
+        [style.textAlign]="textAlign"
+        [style.color]="color"
+        [style.fontSize]="fontSize"
+        [style.fontWeight]="fontWeight"
+        [style.background]="background"
+        [ngStyle]="ngStyles"
+      >
+        {{ text }}
+      </a>
+    </div>
+  </ng-container>
+</div>

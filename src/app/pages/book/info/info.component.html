@@ -1,0 +1,138 @@
+<ng-container *ngIf="backend$ | async as back">
+  <ng-container *ngIf="isWeb$ | async; else mobile">
+    <form [formGroup]="formInfo">
+      <ng-template matStepLabel> <p>ข้อมูลทั่วไป</p> </ng-template>
+      <p class="marginP">ข้อมูลทั่วไป</p>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <c-input
+            [label]="back.general_first_name.label"
+            [control]="getFormInfoByName('firstname')"
+            [inputType]="'text'"
+            [dOnlyChar]="true"
+            [required]="true"
+          ></c-input>
+        </div>
+        <div class="col">
+          <c-input
+            [label]="back.general_last_name.label"
+            [control]="getFormInfoByName('lastname')"
+            [inputType]="'text'"
+            [dOnlyChar]="true"
+            [required]="true"
+          ></c-input>
+        </div>
+        <div class="col">
+          <c-input
+            [label]="back.general_mobile.label"
+            [control]="getFormInfoByName('phonenumber')"
+            [inputType]="'text'"
+            [required]="true"
+            dMask="0000000000"
+          ></c-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <c-input
+            [label]="back.general_license_number.label"
+            [control]="getFormInfoByName('registration')"
+            [inputType]="'text'"
+            [dCharNum]="true"
+            [required]="true"
+          ></c-input>
+        </div>
+        <div class="col-4">
+          <c-select-province
+            label="{{ back.general_license_province.label }}"
+            [control]="getFormInfoByName('provinceregistration')"
+          ></c-select-province>
+        </div>
+      </div>
+
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="acceptpromotion"
+        [checked]="isChecked$ | async"
+        (change)="onChecked($event)"
+      />
+      <label for="acceptpromotion" class="deMargin checkbox-label"
+        >ฉันได้อ่านและยอมรับรายละเอียดและเงื่อนไขโปรโมชั่นนี้แล้ว</label
+      >
+
+      <div class="center center-item">
+        <button [disabled]="isInStep" class="btn" mat-button matStepperNext>
+          ถัดไป
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Mobile -->
+  <ng-template #mobile>
+    <form [formGroup]="formInfo">
+      <ng-template matStepLabel> <p>ข้อมูลทั่วไป</p> </ng-template>
+      <p class="marginP">ข้อมูลทั่วไป</p>
+      <hr />
+
+      <c-input
+        [label]="back.general_first_name.label"
+        [control]="getFormInfoByName('firstname')"
+        [inputType]="'text'"
+        [dOnlyChar]="true"
+        [required]="true"
+      ></c-input>
+
+      <c-input
+        [label]="back.general_last_name.label"
+        [control]="getFormInfoByName('lastname')"
+        [inputType]="'text'"
+        [dOnlyChar]="true"
+        [required]="true"
+      ></c-input>
+
+      <c-input
+        [label]="back.general_mobile.label"
+        [control]="getFormInfoByName('phonenumber')"
+        [inputType]="'text'"
+        dMask="0000000000"
+        [required]="true"
+      ></c-input>
+
+      <c-input
+        [label]="back.general_license_number.label"
+        [control]="getFormInfoByName('registration')"
+        [inputType]="'text'"
+        [dCharNum]="true"
+        [required]="true"
+      ></c-input>
+
+      <c-select-province
+        label="{{ back.general_license_province.label }}"
+        [control]="getFormInfoByName('provinceregistration')"
+      ></c-select-province>
+
+      <div style="margin-top: 50px; margin-bottom: 50px">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="acceptpromotionMobile"
+          [checked]="isChecked$ | async"
+          (change)="onChecked($event)"
+        />
+        <label for="acceptpromotionMobile" class="deMargin checkbox-label">
+          ฉันได้อ่านและยอมรับรายละเอียดและเงื่อนไขโปรโมชั่นนี้แล้ว</label
+        >
+      </div>
+
+      <div class="center center-item">
+        <button [disabled]="isInStep" class="btn" mat-button matStepperNext>
+          ถัดไป
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</ng-container>

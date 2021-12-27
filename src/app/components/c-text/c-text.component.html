@@ -1,0 +1,22 @@
+<div class="gnext-v2-other-reusable-p-a">
+  <div
+    [style.border]="border"
+    [style.borderRadius]="borderRadius"
+    class="cover-p"
+  >
+    <p
+      [ngClass]="{ skeleton: !skeleton }"
+      [style.padding]="padding"
+      [style.margin]="margin"
+      [style.textAlign]="textAlign"
+      [style.color]="color"
+      [style.fontSize]="fontSize"
+      [style.lineHeight]="lineHeight"
+      [style.fontWeight]="fontWeight"
+      [style.-webkit-line-clamp]="webkitLineClamp"
+      [ngStyle]="ngStyles"
+    >
+      {{ text }}
+    </p>
+  </div>
+</div>

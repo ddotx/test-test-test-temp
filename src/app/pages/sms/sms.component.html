@@ -1,0 +1,234 @@
+<div class="blackline center center-text">
+  <img
+    src="assets/logo_cockpit.png"
+    alt="logo_cockpit"
+    class="cockpitimgsize"
+  />
+</div>
+<div class="panelpage">
+  <information-panel></information-panel>
+</div>
+<ng-container *ngIf="redeemInfo$ | async as info">
+  <ng-container *ngIf="isWeb$ | async; else mobile">
+    <div class="summary">
+      <p class="summary-h-sub">ข้อมูลทั่วไป</p>
+      <div class="row">
+        <div class="col-4">
+          <p class="summary-content">ชื่อ : {{ info.info_first_name }}</p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">นามสกุล : {{ info.info_last_name }}</p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">เบอร์โทรศัพท์ : {{ info.info_mobile }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="summary-content">
+            ทะเบียนรถที่จะเข้ารับบริการ: {{ info.car_license_number }}
+          </p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">
+            จังหวัดของเลขทะเบียนรถ: {{ info.car_license_province }}
+          </p>
+        </div>
+      </div>
+
+      <p class="summary-h-sub">ข้อมูลรถยนต์</p>
+      <div class="row">
+        <div class="col-4">
+          <p class="summary-content">ยี่ห้อรถยนต์: {{ info.car_brand }}</p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">ปีรถยนต์: {{ info.car_year }}</p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">รุ่นรถยนต์: {{ info.car_model }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <p class="summary-content">
+            รุ่นย่อยรถยนต์ (ถ้ามี): {{ info.car_sub_model }}
+          </p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">
+            ยี่ห้อยางที่ใช้ปัจจุบัน: {{ info.tire_brand }}
+          </p>
+        </div>
+        <div class="col-4">
+          <p class="summary-content">ขนาดยางหน้า: {{ info.tire_front }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <p class="summary-content">ขนาดยางหลัง: {{ info.tire_rear }}</p>
+        </div>
+      </div>
+
+      <p class="summary-h-sub">ศูนย์บริการ</p>
+      <p class="summary-content">{{ info.branch }}</p>
+    </div>
+
+    <ng-container *ngIf="promoCode$ | async; else notCoded">
+      <p class="center center-text bold margintop" style="font-size: 20px">
+        รหัสส่วนลดของท่านคือ
+      </p>
+
+      <div class="center center-text center-item">
+        <div class="codebox margintop">
+          <p class="codetext bold">{{ info.promo_code }}</p>
+        </div>
+      </div>
+
+      <ng-container *ngIf="timeStampBS | async as timeStamp">
+        <p class="datetext margintop center center-text">
+          วันและเวลาที่รับสิทธิ
+          <br />
+          <!-- {{ info.submit_time * 1000 | date: "dd/MM/YYY HH:MM" }} -->
+          {{ timeStamp | date: "dd/MM/YYY HH:mm" }}
+        </p>
+      </ng-container>
+
+      <p class="center center-text margintop" style="font-size: 19px">
+        กรุณาแสดงรหัสส่วนลดและข้อมูลการลงทะเบียนแก่พนักงาน <br />
+        เมื่อ ท่านรับสิทธิ์ส่วนลดสำเร็จแล้วกรุณากด "ตกลง" ภายในเวลา 30 นาที
+      </p>
+      <p class="alertText center center-text">
+        *หากเกินระยะเวลา 30 นาที หรือ ปิดหน้าจอนี้แล้ว
+        จะไม่สามารถเข้าดูรหัสส่วนลดนี้ได้อีกครั้ง
+      </p>
+
+      <div class="center center-text">
+        <button class="btn btn-marginbottom" routerLink="/status">ตกลง</button>
+      </div>
+    </ng-container>
+
+    <ng-template #notCoded>
+      <div class="margininfobottom">
+        <p class="summary-h-sub">วิธีรับส่วนลด</p>
+        <p class="detail-lower">
+          1.กดยืนยันรับสิทธิ์ส่วนลดต่อหน้าเจ้าหน้าที่ ณ ศูนย์บริการ COCKPIT และ
+          A.C.T เท่านั้น หากมีการกดยืนยันสิทธิ์มาก่อน จะถือว่าสิทธิ์นั้นๆ
+          ได้ใช้ไปแล้ว และท่านไม่สามารถ นำส่วนลดนี้มาเรียกร้องสิทธิ์ใดๆ
+          จากบริษัทฯ ได้อีก
+          <br />
+          2.แสดงรหัสส่วนลดต่อหน้าพนักงาน เพื่อตรวจสอบข้อมูลการลงทะเบียน
+        </p>
+      </div>
+
+      <div class="center center-text">
+        <button class="btn btn-onebtn btn-marginbottom" (click)="onRedeem()">
+          ยืนยันรับสิทธิ์
+        </button>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <!-- Mobile  -->
+  <ng-template #mobile>
+    <div class="summary">
+      <p class="summary-h-sub">ข้อมูลทั่วไป</p>
+
+      <p class="summary-content">ชื่อ : {{ info.info_first_name }}</p>
+
+      <p class="summary-content">นามสกุล : {{ info.info_last_name }}</p>
+
+      <p class="summary-content">เบอร์โทรศัพท์ : {{ info.info_mobile }}</p>
+
+      <p class="summary-content">
+        ทะเบียนรถที่จะเข้ารับบริการ: {{ info.car_license_number }}
+      </p>
+
+      <p class="summary-content">
+        จังหวัดของเลขทะเบียนรถ: {{ info.car_license_province }}
+      </p>
+
+      <p class="summary-h-sub">ข้อมูลรถยนต์</p>
+
+      <p class="summary-content">ยี่ห้อรถยนต์: {{ info.car_brand }}</p>
+
+      <p class="summary-content">ปีรถยนต์: {{ info.car_year }}</p>
+
+      <p class="summary-content">รุ่นรถยนต์: {{ info.car_model }}</p>
+
+      <p class="summary-content">
+        รุ่นย่อยรถยนต์ (ถ้ามี): {{ info.car_sub_model }}
+      </p>
+
+      <p class="summary-content">
+        ยี่ห้อยางที่ใช้ปัจจุบัน: {{ info.tire_brand }}
+      </p>
+
+      <p class="summary-content">ขนาดยางหน้า: {{ info.tire_front }}</p>
+
+      <p class="summary-content">ขนาดยางหลัง: {{ info.tire_rear }}</p>
+
+      <p class="summary-h-sub">ศูนย์บริการ</p>
+      <p class="summary-content">{{ info.branch }}</p>
+    </div>
+
+    <ng-container *ngIf="promoCode$ | async; else notCoded">
+      <p class="center center-text bold margintop" style="font-size: 20px">
+        รหัสส่วนลดของท่านคือ
+      </p>
+
+      <div class="center center-text center-item">
+        <div class="codebox margintop">
+          <p class="codetext bold">{{ info.promo_code }}</p>
+        </div>
+      </div>
+
+      <ng-container *ngIf="timeStampBS | async as timeStamp">
+        <p class="datetext margintop center center-text">
+          วันและเวลาที่รับสิทธิ
+          <br />
+          <!-- {{ info.submit_time * 1000 | date: "dd/MM/YYY HH:MM" }} -->
+          {{ timeStamp | date: "dd/MM/YYY HH:mm" }}
+        </p>
+      </ng-container>
+      <p
+        class="center center-text margintop"
+        style="font-size: 11px; font-weight: 500"
+      >
+        กรุณาแสดงรหัสส่วนลดและข้อมูลการลงทะเบียนแก่พนักงาน <br />
+        เมื่อ ท่านรับสิทธิ์ส่วนลดสำเร็จแล้วกรุณากด "ตกลง" ภายในเวลา 30 นาที
+      </p>
+      <p class="alertText center center-text">
+        *หากเกินระยะเวลา 30 นาที หรือ ปิดหน้าจอนี้แล้ว
+        <br />
+        จะไม่สามารถเข้าดูรหัสส่วนลดนี้ได้อีกครั้ง
+      </p>
+
+      <div class="center center-text">
+        <button class="btn btn-marginbottom margintop" routerLink="/status">
+          ตกลง
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #notCoded>
+      <div class="margininfobottom">
+        <p class="summary-h-sub">วิธีรับส่วนลด</p>
+        <p class="detail-lower">
+          1.กดยืนยันรับสิทธิ์ส่วนลดต่อหน้าเจ้าหน้าที่ ณ ศูนย์บริการ COCKPIT และ
+          A.C.T เท่านั้น หากมีการกดยืนยันสิทธิ์มาก่อน จะถือว่าสิทธิ์นั้นๆ
+          ได้ใช้ไปแล้ว และท่านไม่สามารถ นำส่วนลดนี้มาเรียกร้องสิทธิ์ใดๆ
+          จากบริษัทฯ ได้อีก
+          <br />
+          2.แสดงรหัสส่วนลดต่อหน้าพนักงาน เพื่อตรวจสอบข้อมูลการลงทะเบียน
+        </p>
+      </div>
+      <div class="center center-text">
+        <button class="btn btn-marginbottom margintop" (click)="onRedeem()">
+          ยืนยันรับสิทธิ์
+        </button>
+      </div>
+    </ng-template>
+  </ng-template>
+</ng-container>

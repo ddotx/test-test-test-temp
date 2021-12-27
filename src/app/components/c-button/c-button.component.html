@@ -1,0 +1,31 @@
+<div class="gnext-v2-other-reusable-button-a">
+  <div class="cover-button">
+    <button
+      [class.FlexCenter]="icon"
+      type="button"
+      [style.borderWidth]="borderWidth"
+      [style.borderStyle]="borderStyle"
+      [style.borderColor]="borderColor"
+      [style.padding]="padding"
+      [style.margin]="margin"
+      [style.width]="width"
+      [style.height]="height"
+      [style.textAlign]="textAlign"
+      [style.color]="color"
+      [style.fontSize]="fontSize"
+      [style.fontWeight]="fontWeight"
+      [style.background]="background"
+      [ngStyle]="ngStyles"
+      (click)="onClick()"
+    >
+      <img *ngIf="icon" class="iconBefore" src="{{ icon }}" alt="" />
+      <c-text
+        [text]="text"
+        [color]="color"
+        [fontSize]="fontSize"
+        [fontWeight]="fontWeight"
+      >
+      </c-text>
+    </button>
+  </div>
+</div>

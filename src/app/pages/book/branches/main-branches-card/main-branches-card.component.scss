@@ -1,0 +1,29 @@
+.gnext-main-branchs-card-a {
+  mat-card {
+    padding: 15px;
+    margin: 0 0 15px 0;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-shadow: unset !important;
+  }
+}
+.sameLineTime {
+  display: flex;
+  align-content: center;
+}
+.coverImage {
+  display: flex;
+  align-items: center;
+  .imgCover {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 8px;
+  }
+}
+
+.mx-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}

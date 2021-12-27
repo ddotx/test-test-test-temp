@@ -1,0 +1,86 @@
+<div class="blackline center center-text">
+    <img src="assets/logo_cockpit.png" alt="logo_cockpit" class="cockpitimgsize" />
+</div>
+
+<div class="container" style="margin-top: 2%">
+    <ng-container *ngIf="isWeb$ | async; else mobile">
+        <img class="full imgCirclestyle" src="assets/icon-alert.png" alt="full" />
+
+        <div class="marginP">
+            <p class="content center-text header">
+                ขออภัย สิทธิ์ส่วนลดที่ท่านลงทะเบียนไว้ ได้สิ้นสุดระยะเวลารับสิทธิ์แล้ว
+                <br>
+                เตรียมพบกับ โปรโมชั่นดีๆ จาก Cockpit เร็วๆนี้
+
+            </p>
+        </div>
+
+        <p class="info-news center-text">
+            ติดตามข่าวสารโปรโมชั่นและสิทธิพิเศษอื่นๆได้ที่
+        </p>
+
+        <div class="grid-container">
+            <p class="connect-p">www.cockpit.co.th</p>
+
+            <img class="connect" src="assets/social-fb.png" alt="iconFb" />
+
+            <p class="connect-p">@CockpitTH</p>
+
+            <img class="connect" src="assets/social-line.png" alt="iconLine" />
+
+            <p class="connect-p">@Cockpit</p>
+
+            <img class="connect" src="assets/phone.png" alt="iconphone" />
+
+            <p class="connect-p" style="padding-left: 6px">1369</p>
+        </div>
+
+        <p class="info-bottom center-text">
+            #Cockpitเป็นกันเองกับทุกคัน
+            <br />
+            #คุ้มครบไวอุ่นใจที่Cockpit
+        </p>
+    </ng-container>
+
+    <!-- Mobile -->
+    <ng-template #mobile>
+
+        <img class="full imgCirclestyle" src="../../../assets/icon-alert.png" alt="full" />
+
+        <div class="marginP">
+            <p class="content center-text">
+                ขออภัย สิทธิ์ส่วนลดที่ท่านลงทะเบียนไว้
+                <br>
+                ได้สิ้นสุดระยะเวลารับสิทธิ์แล้ว
+                <br>
+                เตรียมพบกับ โปรโมชั่นดีๆ จาก Cockpit เร็วๆนี้
+            </p>
+        </div>
+
+
+        <p class="info-news center-text" style="margin-top: 25%">
+            ติดตามข่าวสารโปรโมชั่นและสิทธิพิเศษอื่นๆได้ที่
+        </p>
+        <div class="grid-container">
+            <p class="connect-p">www.cockpit.co.th</p>
+
+            <img class="connect" src="assets/social-fb.png" alt="iconFb" />
+
+            <p class="connect-p">@CockpitTH</p>
+        </div>
+        <div class="grid-container-2">
+            <img class="connect" src="assets/social-line.png" alt="iconLine" />
+
+            <p class="connect-p">@Cockpit</p>
+
+            <img class="connect connect-phone" src="assets/phone.png" alt="iconphone" />
+
+            <p class="connect-p">1369</p>
+        </div>
+        <p class="info-bottom center-text">
+            #Cockpitเป็นกันเองกับทุกคัน
+            <br />
+            #คุ้มครบไวอุ่นใจที่Cockpit
+        </p>
+    </ng-template>
+</div>

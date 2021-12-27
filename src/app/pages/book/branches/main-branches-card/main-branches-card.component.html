@@ -1,0 +1,210 @@
+<div class="gnext-main-branchs-card-a">
+  <ng-container *ngIf="isWeb$ | async; else mobile">
+    <ng-container *ngIf="vm$ | async as vm">
+      <mat-card class="d-block d-xl-none">
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div class="coverImage" gnextColumn="6" gnextPadding="0 7.5px">
+            <img class="imgCover" src="{{ item.image_cover_url }}" alt="" />
+          </div>
+          <div style="display: flex; align-items: center" gnextColumn="6" gnextPadding="0 7.5px">
+            <c-button [padding]="'0 10px'" [margin]="'7.5px 0'" [borderWidth]="vm.borderWidth"
+              [borderColor]="vm.borderColor" [width]="'100%'" [height]="'45px'" [color]="vm.color"
+              [background]="vm.background" [fontSize]="'16px'" [fontWeight]="'500'"
+              [ngStyles]="{ 'border-radius': '4px' }" [text]="'เลือกศูนย์บริการ'"
+              (onclick)="onSendBranchs(item.id, item.title)">
+            </c-button>
+          </div>
+          <div gnextColumn="12" gnextPadding="0 7.5px">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text-header [padding]="'0'" [margin]="'10px 0'" [textAlign]="'left'" [color]="'black'"
+                  [fontSize]="'14px'" [fontWeight]="'500'" [text]="item.title">
+                </c-text-header>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'" [color]="'#919191'"
+                  [fontSize]="'12px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.address_full">
+                </c-text>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px" *ngIf="item.phone">
+                <c-text-link [hrefType]="'tel:+66'" [hrefLink]="item.phone" [borderWidth]="'0'" [color]="'#919191'"
+                  [fontSize]="'12px'" [fontWeight]="'300'" [text]="'Tel : ' + item.phone">
+                </c-text-link>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <div gnextRow gnextMargin="0 -7.5px">
+                  <div class="sameLineTime" gnextColumn="auto" gnextPadding="0 3.25px 0 7.5px">
+                    <c-text [padding]="'0'" [margin]="'6px 0'" [textAlign]="'left'"
+                      [color]="item.data_working_day_time_is_enable.color" [fontSize]="'12px'" [fontWeight]="'300'"
+                      [webkitLineClamp]="'unset'" [text]="item.data_working_day_time_is_enable.is_name">
+                    </c-text>
+                    <c-text *ngIf="
+                      item.data_working_day_time_is_enable.is_enable == true
+                    " [padding]="'0'" [margin]="'6px 0'" [textAlign]="'left'" [color]="'#919191'" [fontSize]="'12px'"
+                      [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.date_working_day_time">
+                    </c-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="d-none d-xl-block">
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div class="coverImage" gnextColumn="2" gnextPadding="0 7.5px">
+            <img class="imgCover" src="{{ item.image_cover_url }}" alt="" />
+          </div>
+          <div style="display: flex; align-items: center" gnextColumn="7" gnextPadding="0 7.5px">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text-header [padding]="'0'" [margin]="'0px 0px 10px 0px'" [textAlign]="'left'" [color]="'black'"
+                  [fontSize]="'20px'" [fontWeight]="'500'" [text]="item.title">
+                </c-text-header>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'" [color]="'#919191'"
+                  [fontSize]="'16px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.address_full">
+                </c-text>
+              </div>
+              <div style="margin: 0px 0px 6px 0px" gnextColumn="12" gnextPadding="0 7.5px" *ngIf="item.phone">
+                <c-text-link [hrefType]="'tel:+66'" [hrefLink]="item.phone" [borderWidth]="'0'" [color]="'#919191'"
+                  [fontSize]="'16px'" [fontWeight]="'300'" [text]="'Tel : ' + item.phone">
+                </c-text-link>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <div gnextRow gnextMargin="0 -7.5px">
+                  <div class="sameLineTime" gnextColumn="auto" gnextPadding="0 3.25px 0 7.5px">
+                    <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'"
+                      [color]="item.data_working_day_time_is_enable.color" [fontSize]="'14px'" [fontWeight]="'300'"
+                      [webkitLineClamp]="'unset'" [text]="item.data_working_day_time_is_enable.is_name">
+                    </c-text>
+                    <c-text *ngIf="
+                      item.data_working_day_time_is_enable.is_enable == true
+                    " [padding]="'0'" [margin]="'0px 0px  0px 6px'" [textAlign]="'left'" [color]="'#919191'"
+                      [fontSize]="'14px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'"
+                      [text]="item.date_working_day_time">
+                    </c-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mx-auto" gnextColumn="3" gnextPadding="0 7.5px">
+            <c-button [padding]="'0 10px'" [margin]="'7.5px 0'" [borderWidth]="vm.borderWidth"
+              [borderColor]="vm.borderColor" [width]="'85%'" [height]="'40px'" [color]="vm.color"
+              [background]="vm.background" [fontSize]="'16px'" [ngStyles]="{ 'border-radius': '4px' }"
+              [text]="'เลือกศูนย์บริการ'" (onclick)="onSendBranchs(item.id, item.title)">
+            </c-button>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+
+
+  <!-- Mobile -->
+  <ng-template #mobile>
+    <ng-container *ngIf="vm$ | async as vm">
+      <mat-card class="d-block d-xl-none">
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div class="coverImage" gnextColumn="6" gnextPadding="0 7.5px">
+            <img class="imgCover" src="{{ item.image_cover_url }}" alt="" />
+          </div>
+          <div style="display: flex; align-items: center" gnextColumn="6" gnextPadding="0 7.5px">
+            <c-button [padding]="'0 10px'" [margin]="'7.5px 0'" [borderWidth]="vm.borderWidth"
+              [borderColor]="vm.borderColor" [width]="'100%'" [height]="'45px'" [color]="vm.color"
+              [background]="vm.background" [fontSize]="'16px'" [fontWeight]="'500'"
+              [ngStyles]="{ 'border-radius': '4px' }" [text]="'เลือกศูนย์บริการ'"
+              (onclick)="onSendBranchs(item.id, item.title)">
+            </c-button>
+          </div>
+          <div gnextColumn="12" gnextPadding="0 7.5px">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text-header [padding]="'0'" [margin]="'10px 0'" [textAlign]="'left'" [color]="'black'"
+                  [fontSize]="'14px'" [fontWeight]="'500'" [text]="item.title">
+                </c-text-header>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'" [color]="'#919191'"
+                  [fontSize]="'12px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.address_full">
+                </c-text>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px" *ngIf="item.phone">
+                <c-text-link [hrefType]="'tel:+66'" [hrefLink]="item.phone" [borderWidth]="'0'" [color]="'#919191'"
+                  [fontSize]="'12px'" [fontWeight]="'300'" [text]="'Tel : ' + item.phone">
+                </c-text-link>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <div gnextRow gnextMargin="0 -7.5px">
+                  <div class="sameLineTime" gnextColumn="auto" gnextPadding="0 3.25px 0 7.5px">
+                    <c-text [padding]="'0'" [margin]="'6px 0'" [textAlign]="'left'"
+                      [color]="item.data_working_day_time_is_enable.color" [fontSize]="'12px'" [fontWeight]="'300'"
+                      [webkitLineClamp]="'unset'" [text]="item.data_working_day_time_is_enable.is_name">
+                    </c-text>
+                    <c-text *ngIf="
+                        item.data_working_day_time_is_enable.is_enable == true
+                      " [padding]="'0'" [margin]="'6px 0'" [textAlign]="'left'" [color]="'#919191'" [fontSize]="'12px'"
+                      [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.date_working_day_time">
+                    </c-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="d-none d-xl-block">
+        <div gnextRow gnextMargin="0 -7.5px">
+          <div class="coverImage" gnextColumn="2" gnextPadding="0 7.5px">
+            <img class="imgCover" src="{{ item.image_cover_url }}" alt="" />
+          </div>
+          <div style="display: flex; align-items: center" gnextColumn="7" gnextPadding="0 7.5px">
+            <div gnextRow gnextMargin="0 -7.5px">
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text-header [padding]="'0'" [margin]="'0px 0px 10px 0px'" [textAlign]="'left'" [color]="'black'"
+                  [fontSize]="'20px'" [fontWeight]="'500'" [text]="item.title">
+                </c-text-header>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'" [color]="'#919191'"
+                  [fontSize]="'16px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'" [text]="item.address_full">
+                </c-text>
+              </div>
+              <div style="margin: 0px 0px 6px 0px" gnextColumn="12" gnextPadding="0 7.5px" *ngIf="item.phone">
+                <c-text-link [hrefType]="'tel:+66'" [hrefLink]="item.phone" [borderWidth]="'0'" [color]="'#919191'"
+                  [fontSize]="'16px'" [fontWeight]="'300'" [text]="'Tel : ' + item.phone">
+                </c-text-link>
+              </div>
+              <div gnextColumn="12" gnextPadding="0 7.5px">
+                <div gnextRow gnextMargin="0 -7.5px">
+                  <div class="sameLineTime" gnextColumn="auto" gnextPadding="0 3.25px 0 7.5px">
+                    <c-text [padding]="'0'" [margin]="'0px 0px 6px 0px'" [textAlign]="'left'"
+                      [color]="item.data_working_day_time_is_enable.color" [fontSize]="'14px'" [fontWeight]="'300'"
+                      [webkitLineClamp]="'unset'" [text]="item.data_working_day_time_is_enable.is_name">
+                    </c-text>
+                    <c-text *ngIf="
+                        item.data_working_day_time_is_enable.is_enable == true
+                      " [padding]="'0'" [margin]="'0px 0px  0px 6px'" [textAlign]="'left'" [color]="'#919191'"
+                      [fontSize]="'14px'" [fontWeight]="'300'" [webkitLineClamp]="'unset'"
+                      [text]="item.date_working_day_time">
+                    </c-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mx-auto" gnextColumn="3" gnextPadding="0 7.5px">
+            <c-button [padding]="'0 10px'" [margin]="'7.5px 0'" [borderWidth]="vm.borderWidth"
+              [borderColor]="vm.borderColor" [width]="'85%'" [height]="'40px'" [color]="vm.color"
+              [background]="vm.background" [fontSize]="'12px'" [ngStyles]="{ 'border-radius': '4px' }"
+              [text]="'เลือกศูนย์บริการ'" (onclick)="onSendBranchs(item.id, item.title)">
+            </c-button>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </ng-template>
+
+</div>

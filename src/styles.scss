@@ -1,0 +1,525 @@
+@import "~@angular/material/theming";
+
+// @font-face {
+//   font-family: "Sukhumvit Set";
+//   src: url("./assets/font/SukhumvitSet-Medium.woff2") format("woff2"),
+//     url("./assets/font/SukhumvitSet-Medium.woff") format("woff");
+// }
+
+$custom-typography: mat-typography-config(
+  $font-family: "Prompt",
+);
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$tiresbid-primary: mat-palette($mat-indigo);
+$tiresbid-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tiresbid-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$tiresbid-theme: mat-light-theme(
+  $tiresbid-primary,
+  $tiresbid-accent,
+  $tiresbid-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($tiresbid-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+html {
+  scroll-behavior: smooth;
+  body {
+    & * {
+      outline: none !important;
+      /* user-select: none !important; */
+      text-decoration: none !important;
+      // font-family: Sukhumvit Set;
+    }
+    @media (min-width: 1200px) {
+      //before 1200px change for responsive
+      .container {
+        max-width: 1600px !important;
+      }
+    }
+
+    font-family: Prompt;
+    .container,
+    [class^="container-"] {
+      .row {
+        &.scrollable {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+        }
+        [class*="col-"] {
+          @for $i from 1 to 11 {
+            &.column-#{$i} {
+              flex: 0 0 calc(100% /#{$i});
+              max-width: calc(100% /#{$i});
+            }
+            @media (min-width: 576px) {
+              &.column-sm-#{$i} {
+                flex: 0 0 calc(100% /#{$i});
+                max-width: calc(100% /#{$i});
+              }
+            }
+            @media (min-width: 768px) {
+              &.column-md-#{$i} {
+                flex: 0 0 calc(100% /#{$i});
+                max-width: calc(100% /#{$i});
+              }
+            }
+            @media (min-width: 992px) {
+              &.column-lg-#{$i} {
+                flex: 0 0 calc(100% /#{$i});
+                max-width: calc(100% /#{$i});
+              }
+            }
+            @media (min-width: 1200px) {
+              &.column-xl-#{$i} {
+                flex: 0 0 calc(100% /#{$i});
+                max-width: calc(100% /#{$i});
+              }
+            }
+          }
+          @for $i from 1 to 101 {
+            &.column-#{$i}p {
+              flex: 0 0 calc(1% *#{$i});
+              max-width: calc(1% *#{$i});
+            }
+            @media (min-width: 576px) {
+              &.column-sm-#{$i}p {
+                flex: 0 0 calc(1% *#{$i});
+                max-width: calc(1% *#{$i});
+              }
+            }
+            @media (min-width: 768px) {
+              &.column-md-#{$i}p {
+                flex: 0 0 calc(1% *#{$i});
+                max-width: calc(1% *#{$i});
+              }
+            }
+            @media (min-width: 992px) {
+              &.column-lg-#{$i}p {
+                flex: 0 0 calc(1% *#{$i});
+                max-width: calc(1% *#{$i});
+              }
+            }
+            @media (min-width: 1200px) {
+              &.column-xl-#{$i}p {
+                flex: 0 0 calc(1% *#{$i});
+                max-width: calc(1% *#{$i});
+              }
+            }
+          }
+        }
+      }
+    }
+    .display-table {
+      &.right {
+        text-align: right;
+      }
+      &.center {
+        text-align: center;
+      }
+      &.left {
+        text-align: left;
+      }
+      &.top {
+        vertical-align: top;
+      }
+      &.middle {
+        vertical-align: middle;
+      }
+      &.bottom {
+        vertical-align: bottom;
+      }
+      @for $i from 1 through 500 {
+        &.width-#{$i}-px {
+          width: $i * 1px;
+        }
+        &.height-#{$i}-px {
+          height: $i * 1px;
+        }
+        &.height-#{$i}-vh {
+          height: $i * 1vh;
+        }
+      }
+      width: 100%;
+      display: table;
+      vertical-align: middle;
+      .display-table-cell {
+        &.top {
+          vertical-align: top;
+        }
+        &.middle {
+          vertical-align: middle;
+        }
+        &.bottom {
+          vertical-align: bottom;
+        }
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .snackbar-red {
+      background-color: red;
+      simple-snack-bar {
+        span {
+          font-size: 16px;
+        }
+        .mat-simple-snackbar-action {
+          button {
+            outline: none !important;
+            font-size: 16px;
+            span {
+              color: white;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+    .snackbar-green {
+      background-color: #34a14c;
+      simple-snack-bar {
+        span {
+          font-size: 16px;
+        }
+        .mat-simple-snackbar-action {
+          button {
+            outline: none !important;
+            font-size: 16px;
+            span {
+              color: white;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+    .snackbar-greenyellow {
+      background-color: #34a14c;
+      simple-snack-bar {
+        span {
+          font-size: 16px;
+        }
+        .mat-simple-snackbar-action {
+          button {
+            outline: none !important;
+            font-size: 16px;
+            span {
+              color: white;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+    .unset-padding {
+      .mat-dialog-container {
+        padding: 0;
+      }
+    }
+    /* */
+    .line-through {
+      text-decoration: line-through !important;
+    }
+    .cdk-overlay-container {
+      .cdk-overlay-connected-position-bounding-box {
+        .cdk-overlay-pane {
+          .mat-select-panel-wrap {
+            .ng-trigger {
+              &.ng-trigger-transformPanel {
+                &.mat-select-panel {
+                  &.language {
+                    margin-top: 35px;
+                    margin-left: -25px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+          }
+          .mat-menu-panel {
+            min-height: auto;
+            &.submenu-black {
+              border-radius: 0;
+              background-color: black;
+              .mat-menu-content {
+                padding: 0;
+                a,
+                button {
+                  &:hover {
+                    color: black;
+                    background-color: white;
+                  }
+                  color: white;
+                  font-size: 16px;
+                  line-height: 48px;
+                  font-weight: 300;
+                }
+                @media (max-width: 1400px) {
+                  a,
+                  button {
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    /* disable auto-zoom on iphone input field focus */
+    input:focus,
+    textarea:focus {
+      font-size: 16px;
+    }
+    .cdk-global-overlay-wrapper {
+      .cdk-overlay-pane {
+        &.cover-dialog-account-reviews-a {
+          mat-dialog-container {
+            &.mat-dialog-container {
+              padding: 15px !important;
+              margin: 0;
+              // border-radius: 0;
+            }
+          }
+        }
+        &.dialog-account-points-and-rewards-a {
+          mat-dialog-container {
+            &.mat-dialog-container {
+              padding: 30px !important;
+              margin: 0;
+              // border-radius: 0;
+            }
+          }
+        }
+        &.dialog-account-points-and-rewards-b {
+          mat-dialog-container {
+            &.mat-dialog-container {
+              padding: 30px !important;
+              margin: 0;
+              // border-radius: 0;
+            }
+          }
+        }
+        &.dialog-account-points-and-rewards-c {
+          mat-dialog-container {
+            &.mat-dialog-container {
+              padding: 30px !important;
+              margin: 0;
+              // border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      select:focus,
+      textarea:focus,
+      input:focus {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@include angular-material-typography($custom-typography);
+
+/*Edit by best*/
+
+.mat-step-text-label {
+  font-size: 16px !important;
+  color: black;
+  font-weight: 500 !important;
+}
+
+.mat-step-header .mat-step-label.mat-step-label-active {
+  .mat-step-text-label {
+    color: black !important;
+  }
+}
+
+.mat-step-header .mat-step-label:not(.mat-step-label-selected) {
+  .mat-step-text-label {
+    font-size: 16px;
+    color: #ababab;
+    font-weight: 500;
+  }
+}
+
+.mat-step-header .mat-step-icon:not(.mat-step-icon-selected) {
+  background-color: #e2e2e2;
+  height: 50px !important;
+  width: 50px !important;
+  .mat-step-icon-content {
+    .mat-icon {
+      svg {
+        fill: #000 !important;
+      }
+    }
+  }
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: black !important;
+  height: 50px !important;
+  width: 50px !important;
+}
+.mat-step-header .mat-step-icon-state-done {
+  background-color: black !important;
+  .mat-step-icon-content {
+    .mat-icon {
+      color: #fbed00;
+    }
+  }
+}
+
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: black !important;
+  .mat-step-icon-content {
+    .mat-icon {
+      color: #fbed00;
+    }
+  }
+}
+
+.mat-stepper-label-position-bottom .mat-stepper-horizontal-line {
+  top: 45px !important;
+}
+.mat-stepper-label-position-bottom .mat-stepper-horizontal-line::after {
+  top: 45px !important;
+}
+
+.mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+.mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header:not(:first-child)::before {
+  width: calc(50% - 25px) !important;
+  border: 6px solid #e2e2e2 !important;
+  top: 45px !important;
+  border-top-style: unset !important;
+}
+
+.mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header:not(:last-child)::after {
+  width: calc(50% - 25px) !important;
+  border: 6px solid #e2e2e2 !important;
+  top: 45px !important;
+  border-top-style: unset !important;
+}
+
+.mat-stepper-horizontal-line {
+  /* border: 3px solid #e2e2e2 !important; */
+}
+.mat-stepper-horizontal-line::after {
+  /* border: 3px solid #e2e2e2 !important; */
+}
+
+.cover-button-stepper button .mat-button-wrapper {
+  font-size: 16px !important;
+}
+
+// .mat-dialog-container {
+//   padding: 65px 50px 25px !important;
+// }
+
+.mat-dialog-actions {
+  justify-content: center !important;
+
+  .mat-dialog-title {
+    font-size: 20px !important;
+    margin: 0 0 25px !important;
+  }
+
+  button:first-child {
+    background-color: #d9d9d9 !important;
+  }
+  // button:last-child {
+  //   background-color: #ffff00 !important ;
+  // }
+}
+
+.mat-calendar-body {
+  tr:first-child {
+    display: none !important;
+  }
+}
+
+.mat-calendar-body-label {
+  padding: 0px !important;
+}
+.mat-calendar-body-cell {
+  padding: 0px !important;
+}
+.mat-calendar-body-cell .Onlythispad {
+  padding: 0px !important;
+
+  .mat-calendar-body-cell-content {
+    border-radius: 0px !important;
+
+    &:hover {
+      background: #cfcfcf !important;
+    }
+  }
+}
+
+.mat-calendar-table-header-divider::after {
+  background: rgb(0 0 0 / 0%) !important;
+}
+.mat-calendar-body-cell-content {
+  font-size: 14px !important;
+}
+.Onlythis {
+  min-height: 282.53px;
+  height: 282.53px;
+}
+.mat-calendar-spacer {
+  display: none;
+}
+.mat-calendar-controls {
+  justify-content: space-between;
+
+  .mat-calendar-previous-button {
+    order: -1;
+  }
+}
+
+.mat-step-icon .mat-icon {
+  font-size: 20px !important;
+  height: 21px !important;
+  width: 21px !important;
+}
+
+.mat-select-trigger {
+  margin-top: 4px !important;
+}
+
+.sb-circles-dark .sb-wrapper .sb-icon {
+  box-shadow: none !important;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0px
+}

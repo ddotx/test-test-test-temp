@@ -1,0 +1,145 @@
+<div class="blackline center center-text">
+  <img
+    src="assets/logo_cockpit.png"
+    alt="logo_cockpit"
+    class="cockpitimgsize"
+  />
+</div>
+
+<div class="panelpage">
+  <information-panel></information-panel>
+</div>
+
+<ng-container *ngIf="isWeb$ | async; else mobile">
+  <div class="margin-inbox">
+    <mat-stepper linear labelPosition="bottom" #stepper class="stepper-step">
+      <ng-template matStepperIcon="done" let-index="index">
+        {{ index + 1 }}
+      </ng-template>
+      <ng-template matStepperIcon="edit" let-index="index">
+        <p style="color: #fff100; margin-top: 12px">{{ index + 1 }}</p>
+      </ng-template>
+      <!-- STEP 1 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>ข้อมูลทั่วไป</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-info [formInfo]="informationForm"></app-info>
+        </ng-template>
+      </mat-step>
+      <!-- STEP 2 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>ข้อมูลรถยนต์</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-car-info
+            [formCarinfo]="carinfo"
+            [infoForm]="informationForm"
+          ></app-car-info>
+        </ng-template>
+      </mat-step>
+      <!-- STEP 3 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>เลือกศูนย์บริการ</p>
+        </ng-template>
+        <div class="marginLeftRight">
+          <ng-template matStepContent>
+            <app-branches
+              [isInStep]="!branchId"
+              (branchId)="branchId = $event"
+              [salesforceQueryForms$]="salesforceQueryForms$"
+            ></app-branches>
+          </ng-template>
+        </div>
+      </mat-step>
+      <!-- STEP 4 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>สรุปข้อมูล</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-summary
+            [formInfo]="informationForm"
+            [formCarinfo]="carinfo"
+            [branchName]="branchName"
+            [messageError]="messageError$ | async"
+            [disableSubmitButton$]="disableSubmitButton$"
+            (onSubmitBooking)="onSubmit()"
+          ></app-summary>
+        </ng-template>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</ng-container>
+
+<!-- Mobile -->
+
+<ng-template #mobile>
+  <div class="margin-inbox">
+    <mat-stepper linear labelPosition="bottom" #stepper class="stepper-step">
+      <ng-template matStepperIcon="done" let-index="index">
+        {{ index + 1 }}
+      </ng-template>
+      <ng-template matStepperIcon="edit" let-index="index">
+        <p style="color: #fff100; margin-top: 12px">{{ index + 1 }}</p>
+      </ng-template>
+      <!-- STEP 1 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>
+            ข้อมูล <br />
+            ทั่วไป
+          </p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-info [formInfo]="informationForm"></app-info>
+        </ng-template>
+      </mat-step>
+      <!-- STEP 2 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>ข้อมูล<br />รถยนต์</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-car-info
+            [infoForm]="informationForm"
+            [formCarinfo]="carinfo"
+          ></app-car-info>
+        </ng-template>
+      </mat-step>
+      <!-- STEP 3 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>เลือก<br />ศูนย์บริการ</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-branches
+            [isInStep]="!branchId"
+            (branchId)="branchId = $event"
+            [salesforceQueryForms$]="salesforceQueryForms$"
+          ></app-branches>
+        </ng-template>
+      </mat-step>
+      <!-- STEP 4 -->
+      <mat-step>
+        <ng-template matStepLabel>
+          <p>สรุป<br />ข้อมูล</p>
+        </ng-template>
+        <ng-template matStepContent>
+          <app-summary
+            style="margin-top: 3%"
+            [formInfo]="informationForm"
+            [formCarinfo]="carinfo"
+            [branchName]="branchName"
+            [messageError]="messageError$ | async"
+            [disableSubmitButton$]="disableSubmitButton$"
+            (onSubmitBooking)="onSubmit()"
+          ></app-summary>
+        </ng-template>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</ng-template>

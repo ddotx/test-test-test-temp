@@ -1,0 +1,29 @@
+{
+    "ok": 1,
+    "data": [
+        {
+            "year": "2019",
+            "tires": [
+                {
+                    "size": "215\/45R17",
+                    "width": 215,
+                    "aspect_ratio": 45,
+                    "rim_speed": "R",
+                    "rim": 17
+                }
+            ]
+        },
+        {
+            "year": "2020",
+            "tires": [
+                {
+                    "size": "215\/45R17",
+                    "width": 215,
+                    "aspect_ratio": 45,
+                    "rim_speed": "R",
+                    "rim": 17
+                }
+            ]
+        }
+    ]
+}

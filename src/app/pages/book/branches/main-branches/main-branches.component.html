@@ -1,0 +1,56 @@
+<div class="gnext-main-branchs-a">
+  <div gnextRow gnextMargin="0 -7.5px">
+    <div gnextColumn="12" gnextPadding="0 7.5px">
+      <app-main-branches-search
+        (getTypeId)="onTypeId($event)"
+        (getLat)="onSendLat($event)"
+        (getlng)="onSendLng($event)"
+        (getSearchText)="onSendSearchText($event)"
+      ></app-main-branches-search>
+    </div>
+  </div>
+  <ng-container *ngIf="vm$ | async as vm">
+    <div class="cover-branchs-list">
+      <div gnextRow gnextMargin="0 -7.5px">
+        <ng-container *ngFor="let branchs of vm.branchs.branchs">
+          <ng-container *ngFor="let branchs_ of branchs; index as i">
+            <ng-container *ngIf="vm.branchs.page === i">
+              <div
+                gnextColumn="12"
+                gnextPadding="0 7.5px"
+                *ngFor="let item of branchs_.branchs"
+              >
+                <app-main-branches-card
+                  [item]="item"
+                  [active]="vm.branchs_id === item.id"
+                  [disableButton]="disableButton$ | async"
+                  (getBranchsId)="onSendBranchsId($event)"
+                  (getBranchsTitle)="onSendBranchsTitle($event)"
+                >
+                </app-main-branches-card>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngFor="let branchs of vm.branchs.branchs">
+      <div gnextRow gnextMargin="0 -7.5px">
+        <div gnextColumn="12" gnextPadding="0 7.5px" *ngIf="branchs.length">
+          <div class="cover-pagination">
+            <div class="pagination">
+              <a (click)="onLeft(vm.branchs.page, branchs)"><</a>
+              <a
+                *ngFor="let branchs_ of branchs; index as page"
+                [class.active]="page === vm.branchs.page"
+                (click)="selectPage(page)"
+                >{{ page + 1 }}</a
+              >
+              <a (click)="onRight(vm.branchs.page, branchs)">></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
